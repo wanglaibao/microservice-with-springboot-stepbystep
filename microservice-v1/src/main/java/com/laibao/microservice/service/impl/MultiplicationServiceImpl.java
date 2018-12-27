@@ -9,8 +9,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class MultiplicationServiceImpl implements MultiplicationService {
 
-    @Autowired
     private RandomGeneratorService randomGeneratorService;
+
+    public MultiplicationServiceImpl(RandomGeneratorService randomGeneratorService) {
+        this.randomGeneratorService = randomGeneratorService;
+    }
 
     @Override
     public Multiplication createRandomMultiplication() {
