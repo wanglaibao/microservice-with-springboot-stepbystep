@@ -1,15 +1,20 @@
 package com.laibao.microservice.service;
 
 import com.laibao.microservice.domain.Multiplication;
+import com.laibao.microservice.domain.MultiplicationResultAttempt;
 
 public interface MultiplicationService {
 
     /**
-     * Creates a Multiplication object with two randomly-
-     generated factors
-     * between 11 and 99.
+     * Generates a random {@link Multiplication} object.
      *
-     * @return a Multiplication object with random factors
+     * @return a multiplication of randomly generated numbers
      */
     Multiplication createRandomMultiplication();
+
+    /**
+     * @return true if the attempt matches the result of the
+     * multiplication, false otherwise.
+     */
+    boolean checkAttempt(final MultiplicationResultAttempt resultAttempt);
 }

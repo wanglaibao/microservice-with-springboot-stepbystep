@@ -21,11 +21,11 @@ public final class Multiplication implements Serializable {
     private final int factorB;
 
     // The result of the operation A * B
-    private final int result;
+    private int result;
 
 
      Multiplication() {
-            this(0,0,0);
+            this(0,0);
     }
 
 }
