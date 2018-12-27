@@ -1,6 +1,8 @@
 package com.laibao.microservice.service;
 
 import com.laibao.microservice.domain.Multiplication;
+import com.laibao.microservice.domain.MultiplicationResultAttempt;
+import com.laibao.microservice.domain.User;
 import com.laibao.microservice.service.impl.MultiplicationServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,5 +38,37 @@ public class MultiplicationServiceImplTest {
         assertThat(multiplication.getFactorA()).isEqualTo(50);
         assertThat(multiplication.getFactorB()).isEqualTo(30);
         assertThat(multiplication.getResult()).isEqualTo(1500);
+    }
+
+
+    @Test
+    public void checkCorrectAttemptTest() {
+        // given
+        Multiplication multiplication = new Multiplication(50, 60);
+        User user = new User("john_doe");
+        MultiplicationResultAttempt attempt = new MultiplicationResultAttempt(user, multiplication, 3000);
+
+        // when
+        boolean attemptResult = multiplicationServiceImpl.checkAttempt(attempt);
+
+        // assert
+        assertThat(attemptResult).isTrue();
+    }
+
+
+    @Test
+    public void checkWrongAttemptTest() {
+
+        // given
+        Multiplication multiplication = new Multiplication(50, 60);
+        User user = new User("john_doe");
+
+        MultiplicationResultAttempt attempt = new MultiplicationResultAttempt(user, multiplication, 3010);
+
+        // when
+        boolean attemptResult = multiplicationServiceImpl.checkAttempt(attempt);
+
+        // assert
+        assertThat(attemptResult).isFalse();
     }
 }
