@@ -3,6 +3,8 @@ package com.laibao.microservice.service;
 import com.laibao.microservice.domain.Multiplication;
 import com.laibao.microservice.domain.MultiplicationResultAttempt;
 
+import java.util.List;
+
 public interface MultiplicationService {
 
     /**
@@ -17,4 +19,6 @@ public interface MultiplicationService {
      * multiplication, false otherwise.
      */
     boolean checkAttempt(final MultiplicationResultAttempt resultAttempt);
+
+    List<MultiplicationResultAttempt> getStatsForUser(String userAlias);
 }
