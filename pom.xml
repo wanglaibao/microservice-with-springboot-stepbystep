@@ -10,7 +10,8 @@
 		<module>microservice-v1</module>
         <module>microservice-v2</module>
         <module>multiplication</module>
-    </modules>
+		<module>gamification</module>
+	</modules>
 	<packaging>pom</packaging>
   
     <developers>
